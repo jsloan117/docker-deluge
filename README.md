@@ -3,8 +3,8 @@
 Docker container for deluge
 
 ![License](https://img.shields.io/badge/License-GPLv3-blue.svg)
-![Docker Automated build](https://img.shields.io/docker/automated/jsloan117/deluge.svg)
-![Docker Pulls](https://img.shields.io/docker/pulls/jsloan117/deluge.svg)
+![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/jsloan117/deluge.svg)
+[![Docker Pulls](https://img.shields.io/docker/pulls/jsloan117/deluge.svg)](https://img.shields.io/docker/pulls/jsloan117/deluge.svg)
 [![](https://images.microbadger.com/badges/image/jsloan117/deluge.svg)](https://microbadger.com/images/jsloan117/deluge "Get your own image badge on microbadger.com")
 [![Codefresh build status]( https://g.codefresh.io/api/badges/pipeline/jsloan117_marketplace/jsloan117%2Fdocker-deluge%2Fdocker-deluge?type=cf-1)]( https://g.codefresh.io/public/accounts/jsloan117_marketplace/pipelines/jsloan117/docker-deluge/docker-deluge)
 
