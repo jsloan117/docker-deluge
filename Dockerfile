@@ -1,5 +1,5 @@
 FROM alpine:edge
-LABEL Name=docker-deluge Version=1.0
+LABEL Name=docker-deluge Version=1.1
 LABEL maintainer="Jonathan Sloan"
 
 RUN echo "*** adding alpine testing repo ***" \
