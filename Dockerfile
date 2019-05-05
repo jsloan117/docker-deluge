@@ -9,7 +9,7 @@ RUN echo "*** adding alpine testing repo ***" \
     && echo "*** installing packages ***" \
     && apk --no-cache add bash tini deluge supervisor shadow grep procps \
     && echo "*** cleanup ***" \
-    && rm -rf /tmp/* /var/tmp/* \
+    && rm -rf /tmp/* /var/tmp/* /var/cache/apk/* \
     && useradd -u 911 -U -d /config -s /bin/false abc
 
 ADD config /configs
