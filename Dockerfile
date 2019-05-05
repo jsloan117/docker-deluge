@@ -21,7 +21,7 @@ ENV DELUGE_HOME=/config \
     DELUGE_WATCH_DIR=/data/watched \
     DELUGE_TORRENT_BACKUP=/data/torrents \
     PUID= \
-    PGUID= \
+    PGID= \
     UMASK= \
     SSL=yes
 
