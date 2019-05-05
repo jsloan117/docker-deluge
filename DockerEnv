@@ -1,0 +1,9 @@
+DELUGE_HOME=/config
+DELUGE_DOWNLOAD_DIR=/data/completed
+DELUGE_INCOMPLETE_DIR=/data/incomplete
+DELUGE_WATCH_DIR=/data/watched
+DELUGE_TORRENT_BACKUP=/data/torrents
+PUID=
+PGUID=
+UMASK=
+SSL=yes
