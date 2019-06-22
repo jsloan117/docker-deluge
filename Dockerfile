@@ -1,5 +1,5 @@
 FROM alpine:edge
-LABEL Name=docker-deluge Version=1.1
+LABEL Name=docker-deluge Version=1.2
 LABEL maintainer="Jonathan Sloan"
 
 RUN echo "*** adding alpine testing repo ***" \
@@ -20,6 +20,8 @@ ENV DELUGE_HOME=/config \
     DELUGE_INCOMPLETE_DIR=/data/incomplete \
     DELUGE_WATCH_DIR=/data/watched \
     DELUGE_TORRENT_BACKUP=/data/torrents \
+    DELUGE_DAEMON_LOG_LEVEL=info \
+    DELUGE_WEB_LOG_LEVEL=info \
     PUID= \
     PGID= \
     UMASK= \
