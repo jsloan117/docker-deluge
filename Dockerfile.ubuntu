@@ -32,5 +32,5 @@ ENV DELUGE_HOME=/config \
 
 VOLUME /config /data
 EXPOSE 8112 58846 58946 58946/udp
-ENTRYPOINT [ "/sbin/tini", "--" ]
+ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD [ "/bin/bash", "/scripts/init.sh" ]
