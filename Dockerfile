@@ -7,7 +7,7 @@ RUN echo "*** adding alpine testing repo ***" \
     && echo "*** updating system ***" \
     && apk update && apk upgrade \
     && echo "*** installing packages ***" \
-    && apk --no-cache add bash tini deluge supervisor shadow grep procps \
+    && apk --no-cache add bash tini deluge supervisor shadow grep procps tzdata \
     && echo "*** cleanup ***" \
     && rm -rf /tmp/* /var/tmp/* /var/cache/apk/* \
     && useradd -u 911 -U -d /config -s /bin/false abc
