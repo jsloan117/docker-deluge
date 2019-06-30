@@ -49,7 +49,7 @@ if [[ -f /config/deluged.pid ]]; then
   rm -f /config/deluged.pid
 fi
 
-# run deluge daemon (daemonized, non-blocking)
+# run deluge daemon
 /usr/bin/deluged -c /config -L "${DELUGE_DAEMON_LOG_LEVEL}" -l /config/deluged.log
 echo "[info] Deluge process started"
 
@@ -65,6 +65,9 @@ echo "[info] Deluge process listening on port 58846"
 
 if ! pgrep -x "deluge-web" > /dev/null; then
   echo "[info] Starting Deluge Web UI..."
-  # run deluge-web (note this is blocking)
-  /usr/bin/deluge-web -d -c /config -L "${DELUGE_WEB_LOG_LEVEL}" -l /config/deluge-web.log
+  # run deluge-web
+  if [[ -f '/etc/alpine-release' ]]; then
+    /usr/bin/deluge-web -d -c /config -L "${DELUGE_WEB_LOG_LEVEL}" -l /config/deluge-web.log
+  elif [[[ -f '/etc/debian_version' ]]]; then
+    /usr/bin/deluge-web -c /config -L "${DELUGE_WEB_LOG_LEVEL}" -l /config/deluge-web.log
 fi
