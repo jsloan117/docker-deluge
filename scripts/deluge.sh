@@ -68,6 +68,6 @@ if ! pgrep -x "deluge-web" > /dev/null; then
   # run deluge-web
   if [[ -f '/etc/alpine-release' ]]; then
     /usr/bin/deluge-web -d -c /config -L "${DELUGE_WEB_LOG_LEVEL}" -l /config/deluge-web.log
-  elif [[[ -f '/etc/debian_version' ]]]; then
+  elif [[ -f '/etc/debian_version' ]]; then
     /usr/bin/deluge-web -c /config -L "${DELUGE_WEB_LOG_LEVEL}" -l /config/deluge-web.log
 fi
