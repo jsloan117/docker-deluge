@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN echo "*** updating system ***" \
     && apt-get update && apt-get -y upgrade \
     && echo "*** installing packages ***" \
-    && apt-get -y install wget iputils-ping iproute2 net-tools deluge deluge-web jq tzdata bash supervisor \
+    && apt-get -y install wget iputils-ping iproute2 net-tools deluge deluged deluge-web jq tzdata bash supervisor \
     && wget https://github.com/krallin/tini/releases/download/v0.18.0/tini_0.18.0-amd64.deb \
     && dpkg -i tini_0.18.0-amd64.deb \
     && rm -f tini_0.18.0-amd64.deb \
