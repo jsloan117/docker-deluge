@@ -15,6 +15,7 @@ steps:
       containerRegistry: 'Docker Hub'
       command: login
     enabled: true
+
   - task: Docker@2
     displayName: 'Build Alpine Image dev'
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
@@ -50,7 +51,7 @@ steps:
       repository: deluge
       command: push
       tags: '$(Build.SourceBranchName)'
-    enabled: false
+    enabled: true
   - task: Docker@2
     displayName: 'Push Ubuntu Image dev'
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
@@ -59,7 +60,58 @@ steps:
       repository: deluge
       command: push
       tags: 'ubuntu-$(Build.SourceBranchName)'
-    enabled: false
+    enabled: true
+
+  - task: Docker@2
+    displayName: 'Build Alpine Image'
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    inputs:
+      containerRegistry: 'Docker Hub'
+      repository: deluge
+      command: build
+      Dockerfile: Dockerfile
+      tags: |
+        $(Build.BuildId)
+        $(Build.SourceBranchName)
+    enabled: true
+  - task: Docker@2
+    displayName: 'Build Ubuntu Image'
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    inputs:
+      containerRegistry: 'Docker Hub'
+      repository: deluge
+      command: build
+      Dockerfile: Dockerfile.ubuntu
+      tags: |
+        ubuntu-latest
+        $(Build.BuildId)
+        ubuntu-$(Build.SourceBranchName)
+    env:
+      DEBIAN_FRONTEND: noninteractive
+    enabled: true
+
+  - task: Docker@2
+    displayName: 'Push Alpine Image'
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    inputs:
+      containerRegistry: 'Docker Hub'
+      repository: deluge
+      command: push
+      tags: |
+        latest
+        $(Build.SourceBranchName)
+    enabled: true
+  - task: Docker@2
+    displayName: 'Push Ubuntu Image'
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    inputs:
+      containerRegistry: 'Docker Hub'
+      repository: deluge
+      command: push
+      tags: |
+        ubuntu-latest
+        ubuntu-$(Build.SourceBranchName)
+    enabled: true
 
   - task: Docker@2
     displayName: Logout
