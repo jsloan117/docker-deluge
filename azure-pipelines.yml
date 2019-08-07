@@ -21,7 +21,7 @@ steps:
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
     inputs:
       containerRegistry: 'Docker Hub'
-      repository: deluge
+      repository: jsloan117/deluge
       command: build
       Dockerfile: Dockerfile
       tags: |
@@ -33,7 +33,7 @@ steps:
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
     inputs:
       containerRegistry: 'Docker Hub'
-      repository: deluge
+      repository: jsloan117/deluge
       command: build
       Dockerfile: Dockerfile.ubuntu
       tags: |
@@ -48,7 +48,7 @@ steps:
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
     inputs:
       containerRegistry: 'Docker Hub'
-      repository: deluge
+      repository: jsloan117/deluge
       command: push
       tags: '$(Build.SourceBranchName)'
     enabled: true
@@ -57,7 +57,7 @@ steps:
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
     inputs:
       containerRegistry: 'Docker Hub'
-      repository: deluge
+      repository: jsloan117/deluge
       command: push
       tags: 'ubuntu-$(Build.SourceBranchName)'
     enabled: true
@@ -67,7 +67,7 @@ steps:
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     inputs:
       containerRegistry: 'Docker Hub'
-      repository: deluge
+      repository: jsloan117/deluge
       command: build
       Dockerfile: Dockerfile
       tags: |
@@ -80,7 +80,7 @@ steps:
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     inputs:
       containerRegistry: 'Docker Hub'
-      repository: deluge
+      repository: jsloan117/deluge
       command: build
       Dockerfile: Dockerfile.ubuntu
       tags: |
@@ -96,7 +96,7 @@ steps:
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     inputs:
       containerRegistry: 'Docker Hub'
-      repository: deluge
+      repository: jsloan117/deluge
       command: push
       tags: |
         latest
@@ -107,7 +107,7 @@ steps:
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     inputs:
       containerRegistry: 'Docker Hub'
-      repository: deluge
+      repository: jsloan117/deluge
       command: push
       tags: |
         ubuntu-latest
