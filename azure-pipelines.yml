@@ -63,7 +63,7 @@ steps:
     enabled: true
 
   - task: Docker@2
-    displayName: 'Build Alpine Image'
+    displayName: 'Build Alpine Image latest'
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     inputs:
       containerRegistry: 'Docker Hub'
@@ -71,11 +71,12 @@ steps:
       command: build
       Dockerfile: Dockerfile
       tags: |
+        latest
         $(Build.BuildId)
         $(Build.SourceBranchName)
     enabled: true
   - task: Docker@2
-    displayName: 'Build Ubuntu Image'
+    displayName: 'Build Ubuntu Image latest'
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     inputs:
       containerRegistry: 'Docker Hub'
@@ -91,7 +92,7 @@ steps:
     enabled: true
 
   - task: Docker@2
-    displayName: 'Push Alpine Image'
+    displayName: 'Push Alpine Image latest'
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     inputs:
       containerRegistry: 'Docker Hub'
@@ -102,7 +103,7 @@ steps:
         $(Build.SourceBranchName)
     enabled: true
   - task: Docker@2
-    displayName: 'Push Ubuntu Image'
+    displayName: 'Push Ubuntu Image latest'
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     inputs:
       containerRegistry: 'Docker Hub'
