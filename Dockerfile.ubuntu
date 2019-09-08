@@ -12,7 +12,7 @@ RUN echo "*** updating system ***" \
     && dpkg -i tini_0.18.0-amd64.deb \
     && rm -f tini_0.18.0-amd64.deb \
     && echo "*** cleanup ***" \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/* \
+    && apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/* \
     && useradd -u 911 -U -d /config -s /bin/false abc
 
 ADD config /configs
