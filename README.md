@@ -1,49 +1,25 @@
 # docker-deluge
 
-Docker container for deluge
-
 ![License](https://img.shields.io/badge/License-GPLv3-blue.svg)
-![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/jsloan117/deluge.svg)
-![Docker Build Status](https://img.shields.io/docker/cloud/build/jsloan117/deluge.svg)
+[![Build Status](https://travis-ci.com/jsloan117/docker-deluge.svg?branch=master)](https://travis-ci.com/jsloan117/docker-deluge)
 [![Docker Pulls](https://img.shields.io/docker/pulls/jsloan117/deluge.svg)](https://img.shields.io/docker/pulls/jsloan117/deluge.svg)
-[![](https://images.microbadger.com/badges/image/jsloan117/deluge.svg)](https://microbadger.com/images/jsloan117/deluge "Get your own image badge on microbadger.com")
 
-Docker container based on Alpine with Deluge
+Deluge BitTorrent client
 
-## Run container from Docker registry
+## Quickstart
 
-The container is available from the Docker registry and this is the simplest way to get it.
-To run the container use this command:
+The below is a quick method to get this up and running. Please see the full documentation for more options.
+
+The default password for the webui is "deluge".
 
 ```bash
-$ docker run -d --name deluge \
--v /path/to/deluge/download/data:/data \
--v /path/to/deluge/config:/config \
--v /etc/resolv.conf:/etc/resolv.conf:ro \
--v /etc/localtime:/etc/localtime:ro \
---env-file /dockerenvironmentfile/path/DockerEnv \
--p 8112:8112 -p 58846:58846 -p 58946:58946 \
+docker run -d --name deluge \
+-v deluge:/deluge-home \
+-v /path/to/deluge/download-data:/data \
+-p 8112:8112 \
 jsloan117/deluge
 ```
 
-```bash
-$ docker run -d --name deluge \
--v /path/to/deluge/download/data:/data \
--v /path/to/deluge/config:/config \
--v /etc/resolv.conf:/etc/resolv.conf:ro \
--v /etc/localtime:/etc/localtime:ro \
--e PUID=996 -e PGID=994 \
--e DELUGE_DOWNLOAD_DIR=/data/completed \
--e DELUGE_INCOMPLETE_DIR=/data/incomplete \
--e DELUGE_WATCH_DIR=/data/watched \
--e DELUGE_TORRENT_BACKUP=/data/torrents \
--e SSL=yes \
--p 8112:8112 -p 58846:58846 -p 58946:58946 \
-jsloan117/deluge
-```
+## Documentation
 
-## Note:
-
-Currently variables DELUGE_HOME & UMASK are not being used, so setting them won't do much.
-
-Default password for the webui is "deluge"
+The full documentation is available [here](http://jsloan117.github.io/docker-deluge).

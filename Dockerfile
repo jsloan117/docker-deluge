@@ -1,33 +1,30 @@
 FROM alpine:edge
-LABEL Name=docker-deluge Version=1.2
-LABEL maintainer="Jonathan Sloan"
+LABEL Name=docker-deluge Maintainer="Jonathan Sloan"
 
 RUN echo "*** adding alpine testing repo ***" \
     && echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
-    && echo "*** updating system ***" \
-    && apk update && apk upgrade \
     && echo "*** installing packages ***" \
     && apk --no-cache add bash tini deluge supervisor shadow grep procps tzdata \
     && echo "*** cleanup ***" \
-    && rm -rf /tmp/* /var/tmp/* /var/cache/apk/* \
-    && useradd -u 911 -U -d /config -s /bin/false abc
+    && rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /var/lib/apk/* \
+    && useradd -u 911 -U -d /deluge-home -s /bin/false abc
 
-ADD config /configs
-ADD scripts /scripts
+COPY configs /configs
+COPY scripts /scripts
+COPY VERSION .
 
-ENV DELUGE_HOME=/config \
-    DELUGE_DOWNLOAD_DIR=/data/completed \
-    DELUGE_INCOMPLETE_DIR=/data/incomplete \
-    DELUGE_WATCH_DIR=/data/watched \
-    DELUGE_TORRENT_BACKUP=/data/torrents \
-    DELUGE_DAEMON_LOG_LEVEL=info \
-    DELUGE_WEB_LOG_LEVEL=info \
-    PUID= \
-    PGID= \
-    UMASK= \
-    SSL=yes
+ENV DELUGE_HOME="/deluge-home" \
+    DELUGE_DOWNLOAD_DIR="/data/completed" \
+    DELUGE_INCOMPLETE_DIR="/data/incomplete" \
+    DELUGE_WATCH_DIR="/data/watched" \
+    DELUGE_TORRENT_BACKUP="/data/torrents" \
+    DELUGE_DAEMON_LOG_LEVEL="info" \
+    DELUGE_WEB_LOG_LEVEL="info" \
+    PUID="911" \
+    PGID="911" \
+    SSL="yes"
 
-VOLUME /config /data
-EXPOSE 8112 58846 58946 58946/udp
+VOLUME /data
+EXPOSE 8112
 ENTRYPOINT [ "/sbin/tini", "--" ]
 CMD [ "/bin/bash", "/scripts/init.sh" ]
