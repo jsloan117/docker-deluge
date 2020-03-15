@@ -4,7 +4,7 @@ LABEL Name=docker-deluge Maintainer="Jonathan Sloan"
 RUN echo "*** adding alpine testing repo ***" \
     && echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
     && echo "*** installing packages ***" \
-    && apk --no-cache add bash tini deluge supervisor shadow grep procps tzdata \
+    && apk update && apk --no-cache add bash tini net-tools deluge supervisor shadow grep procps \
     && echo "*** cleanup ***" \
     && rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /var/lib/apk/* \
     && useradd -u 911 -U -d /deluge-home -s /bin/false abc
