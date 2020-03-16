@@ -1,11 +1,8 @@
 <h1 align="center">
-  Deluge
+  Deluge BitTorrent client
 </h1>
 
 <p align="center">
-  Deluge BitTorrent client
-  <br/><br/>
-
   <a href="https://github.com/jsloan117/docker-deluge/blob/master/LICENSE">
     <img alt="license" src="https://img.shields.io/badge/License-GPLv3-blue.svg" />
   </a>
@@ -19,9 +16,9 @@
 
 ## Quickstart
 
-The below is a quick method to get this up and running. Please see the other documentation links for further details.
+Below is a quick method to get this up and running. Please see [Run from Docker registry](http://jsloan117.github.io/docker-deluge/run-from-docker-registry) for more details and commands.
 
-The default password for the webui is "deluge".
+The default password for the WebUI is "deluge".
 
 ```bash
 docker run -d --name deluge \
