@@ -1,13 +1,13 @@
 file:
   /deluge-home/core.conf:
     exists: true
-    mode: "0644"
+    mode: "0600"
     owner: abc
     group: abc
     filetype: file
   /deluge-home/web.conf:
     exists: true
-    mode: "0644"
+    mode: "0600"
     owner: abc
     group: abc
     filetype: file
@@ -17,7 +17,7 @@ file:
     owner: root
     group: root
     filetype: file
-  /etc/supervisor/conf.d/deluge.conf:
+  /etc/supervisor.d/deluge.conf:
     exists: true
     mode: "0644"
     owner: root
@@ -25,31 +25,31 @@ file:
     filetype: file
   /scripts/init.sh:
     exists: true
-    mode: "0755"
+    mode: "0775"
     owner: root
     group: root
     filetype: file
   /scripts/usersetup.sh:
     exists: true
-    mode: "0755"
+    mode: "0775"
     owner: root
     group: root
     filetype: file
   /scripts/deluge.sh:
     exists: true
-    mode: "0755"
+    mode: "0775"
     owner: root
     group: root
     filetype: file
   /scripts/torrentcheck.sh:
     exists: true
-    mode: "0755"
+    mode: "0775"
     owner: root
     group: root
     filetype: file
   /scripts/create_cert.sh:
     exists: true
-    mode: "0755"
+    mode: "0775"
     owner: root
     group: root
     filetype: file
@@ -69,7 +69,7 @@ command:
     exit-status: 0
     exec: "ps -ef"
     stdout:
-      - "/usr/bin/python3 /usr/bin/deluged"
+      - "/usr/bin/python /usr/bin/deluged"
       - "deluge-web"
     stderr: []
     timeout: 3000
