@@ -1,13 +1,13 @@
 file:
   /deluge-home/core.conf:
     exists: true
-    mode: "0600"
+    mode: "0644"
     owner: abc
     group: abc
     filetype: file
   /deluge-home/web.conf:
     exists: true
-    mode: "0600"
+    mode: "0644"
     owner: abc
     group: abc
     filetype: file
@@ -59,20 +59,16 @@ port:
     listening: true
 
 process:
-  python:
+  tini:
+    running: true
+  supervisord:
+    running: true
+  deluge.sh:
+    running: true
+  deluged:
     running: true
   deluge-web:
     running: true
-
-command:
-  deluge:
-    exit-status: 0
-    exec: "ps -ef"
-    stdout:
-      - "/usr/bin/python /usr/bin/deluged"
-      - "deluge-web"
-    stderr: []
-    timeout: 3000
 
 http:
   https://127.0.0.1:8112:

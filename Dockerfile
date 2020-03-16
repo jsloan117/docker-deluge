@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive LC_ALL=C.UTF-8 LANG=C.UTF-8
 RUN echo "*** installing packages ***" \
     && apt-get update && apt-get -y --no-install-recommends install wget net-tools deluged \
     deluge-console deluge-web bash supervisor procps \
-    && wget --no-check-certificate https://github.com/krallin/tini/releases/download/v0.18.0/tini_0.18.0-amd64.deb \
+    && wget -q --no-check-certificate https://github.com/krallin/tini/releases/download/v0.18.0/tini_0.18.0-amd64.deb \
     && dpkg -i tini_0.18.0-amd64.deb \
     && rm -f tini_0.18.0-amd64.deb \
     && echo "*** cleanup ***" \
