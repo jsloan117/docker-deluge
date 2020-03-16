@@ -1,16 +1,13 @@
-FROM ubuntu:18.04
+# THIS APPEARS TO BE BROKEN AT THIS TIME
+FROM alpine:edge
 LABEL Name=docker-deluge Maintainer="Jonathan Sloan"
 
-ENV DEBIAN_FRONTEND=noninteractive LC_ALL=C.UTF-8 LANG=C.UTF-8
-
-RUN echo "*** installing packages ***" \
-    && apt-get update && apt-get -y --no-install-recommends install wget net-tools deluged \
-    deluge-console deluge-web bash supervisor procps \
-    && wget -q --no-check-certificate https://github.com/krallin/tini/releases/download/v0.18.0/tini_0.18.0-amd64.deb \
-    && dpkg -i tini_0.18.0-amd64.deb \
-    && rm -f tini_0.18.0-amd64.deb \
+RUN echo "*** adding alpine testing repo ***" \
+    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
+    && echo "*** installing packages ***" \
+    && apk update && apk --no-cache add bash tini net-tools deluge supervisor shadow grep procps \
     && echo "*** cleanup ***" \
-    && rm -rf /tmp/* /var/tmp/* /var/cache/apt/* /var/lib/apt/lists/* \
+    && rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /var/lib/apk/* \
     && useradd -u 911 -U -d /deluge-home -s /bin/false abc
 
 COPY configs /configs
@@ -30,5 +27,5 @@ ENV DELUGE_HOME="/deluge-home" \
 
 VOLUME /data
 EXPOSE 8112
-ENTRYPOINT [ "/usr/bin/tini", "--" ]
+ENTRYPOINT [ "/sbin/tini", "--" ]
 CMD [ "/bin/bash", "/scripts/init.sh" ]
