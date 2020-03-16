@@ -8,7 +8,7 @@ if [ -n "${PUID}" ] && [ ! "$(id -u root)" -eq "${PUID}" ]; then
   RUN_AS=abc
   if [ ! "$(id -u ${RUN_AS})" -eq "${PUID}" ]; then usermod -o -u "${PUID}" "${RUN_AS}"; fi
   if [ ! "$(id -g ${RUN_AS})" -eq "${PGID}" ]; then groupmod -o -g "${PGID}" "${RUN_AS}"; fi
-  if [ -n "${DELUGE_HOME}" ]; then usermod -dm "${DELUGE_HOME}" "${RUN_AS}"; fi
+  if [ -n "${DELUGE_HOME}" ]; then usermod -md "${DELUGE_HOME}" "${RUN_AS}"; fi
 
   # Make sure directories exist before chown and chmod
   dlist=( "/data" "${DELUGE_HOME}" \
