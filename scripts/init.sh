@@ -11,4 +11,4 @@ fi
 # ensure ownership & permissions are correctly set
 /scripts/usersetup.sh
 
-exec /usr/bin/supervisord -c /etc/supervisor.conf -n
+exec supervisord -c /etc/supervisor.conf -n

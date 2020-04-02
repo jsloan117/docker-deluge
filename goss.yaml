@@ -1,13 +1,13 @@
 file:
   /deluge-home/core.conf:
     exists: true
-    mode: "0644"
+    mode: "0600"
     owner: abc
     group: abc
     filetype: file
   /deluge-home/web.conf:
     exists: true
-    mode: "0644"
+    mode: "0600"
     owner: abc
     group: abc
     filetype: file
@@ -62,8 +62,6 @@ process:
   tini:
     running: true
   supervisord:
-    running: true
-  deluge.sh:
     running: true
   deluged:
     running: true
