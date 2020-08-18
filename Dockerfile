@@ -7,10 +7,6 @@ RUN echo "*** installing packages ***" \
     && apt-get update && apt-get -y --no-install-recommends install wget net-tools bash python3 python3-pip procps software-properties-common \
     && add-apt-repository ppa:deluge-team/stable && apt-get update && apt-get -y --no-install-recommends install deluged deluge-console deluge-web \
     tini supervisor \
-    # && pip3 install supervisor \
-    # && wget -q --no-check-certificate https://github.com/krallin/tini/releases/download/v0.18.0/tini_0.18.0-amd64.deb \
-    # && dpkg -i tini_0.18.0-amd64.deb \
-    # && rm -f tini_0.18.0-amd64.deb \
     && echo "*** cleanup ***" \
     && apt-get -y remove python3-pip software-properties-common \
     && apt-get -y autoremove && apt-get autoclean \
