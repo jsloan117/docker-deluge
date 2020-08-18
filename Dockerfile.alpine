@@ -1,5 +1,5 @@
 # THIS APPEARS TO BE BROKEN AT THIS TIME
-FROM alpine:edge
+FROM alpine:3.12
 LABEL Name=docker-deluge Maintainer="Jonathan Sloan"
 
 RUN echo "*** adding alpine testing repo ***" \
